@@ -1,4 +1,4 @@
-# josh_mobile
+# JOSH Mobile
 
 A new Flutter project.
 
