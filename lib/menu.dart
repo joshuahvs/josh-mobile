@@ -147,7 +147,7 @@ class ItemCard extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
+              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}")),
             );
         },
         // Container untuk menyimpan Icon dan Text
