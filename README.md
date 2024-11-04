@@ -1,6 +1,6 @@
 # JOSH Mobile
 
-# Tugas 1
+# Tugas 7
 ## 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
 Stateless Widget adalah widget yang tampilannya tetap dan tidak berubah selama aplikasi berjalan karena tidak memiliki state (keadaan) yang bisa berubah. Sebaliknya, Stateful Widget adalah widget yang memiliki state internal yang dapat berubah-ubah, sehingga bisa memperbarui tampilan saat ada perubahan data. Jadi, perbedaannya terletak pada kemampuan Stateful Widget untuk merespons perubahan dan memperbarui UI, sedangkan Stateless Widget tidak bisa melakukan itu.
 
@@ -29,3 +29,37 @@ Fungsi `setState()` digunakan dalam Stateful Widget untuk memberi tahu Flutter b
 Perbedaan antara `const` dan `final`:
 * `const`: Digunakan untuk mendefinisikan nilai konstan pada waktu kompilasi (compile-time constant). Nilainya harus sudah diketahui sebelum program berjalan dan bersifat immutable.
 * `final`: Digunakan untuk variabel yang nilainya ditetapkan sekali dan tidak dapat diubah setelahnya. Nilainya dapat ditentukan saat runtime, bukan hanya pada waktu kompilasi.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
+1. Saya membuat proyek flutter bernama josh_mobile, karena saya memilih untuk menggunakan vscode, dan saya sudah menginstall semua extension yang dibutuhkan, saya membuat proyek flutter ini dengan menekan `command + shift + p`.
+2. Lalu saya merapikan kode dengan memindahkan beberapa potongan kode ke dalam `menu.dart` yang saya buat.
+3. Untuk membuat tiga tombol sederhana dengan ikon dan teks untuk: **Lihat Daftar Produk**, **Tambah Produk**, dan **Logout**, saya mengimplementasikan menggunakan kelas `ItemHomepage` yang mendefinisikan nama, ikon, dan warna tombol. Objek-objek ini dimasukkan ke dalam list `items`:
+
+     ```dart
+     final List<ItemHomepage> items = [
+       ItemHomepage("Lihat Daftar Produk", Icons.list_alt, Colors.red),
+       ItemHomepage("Tambah Produk", Icons.add, Colors.blue),
+       ItemHomepage("Logout", Icons.logout, Colors.yellow),
+     ];
+     ```
+4. Untuk mengimplementasikan warna-warna yang berbeda untuk setiap tombol, setiap item dalam list `items` memiliki properti `color` yang digunakan untuk mengatur warna latar belakang di `ItemCard`. Warna ini diatur menggunakan widget `Material`:
+     ```dart
+     return Material(
+       color: item.color, // Warna diambil dari properti color
+       borderRadius: BorderRadius.circular(12),
+       child: InkWell(
+         // Aksi untuk interaksi
+       ),
+     );
+     ```
+5. Untuk memunculkan snackbar dengan tulisan tertentu ketika tombol ditekan, di dalam `ItemCard`, Saya memakain `InkWell` untuk menangani aksi ketika tombol ditekan. Ketika tombol ditekan, `ScaffoldMessenger` digunakan untuk menampilkan `Snackbar` dengan pesan yang menyesuaikan nama tombol:
+
+     ```dart
+     onTap: () {
+       ScaffoldMessenger.of(context)
+         ..hideCurrentSnackBar()
+         ..showSnackBar(
+           SnackBar(content: Text("Kamu telah menekan tombol ${item.name}")),
+         );
+     },
+     ```
