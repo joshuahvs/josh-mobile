@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:josh_mobile/menu.dart';
+import 'package:josh_mobile/screens/itementry_form.dart';
+import 'package:josh_mobile/screens/menu.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -52,14 +53,15 @@ class LeftDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.mood),
+              leading: const Icon(Icons.add),
               title: const Text('Tambah Item'),
               // Bagian redirection ke MoodEntryFormPage
               onTap: () {
-                /*
-                TODO: Buatlah routing ke MoodEntryFormPage di sini,
-                setelah halaman MoodEntryFormPage sudah dibuat.
-                */
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ItemEntryFormPage(),
+                    ));
               },
             ),
         ],
