@@ -179,6 +179,6 @@ class _ItemEntryFormPageState extends State<ItemEntryFormPage> {
           ),
         ),
       ),
-    );;
+    );
   }
 }
