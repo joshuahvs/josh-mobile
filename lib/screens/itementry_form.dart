@@ -141,7 +141,7 @@ class _ItemEntryFormPageState extends State<ItemEntryFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Mood berhasil tersimpan'),
+                              title: const Text('Item berhasil tersimpan'),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
