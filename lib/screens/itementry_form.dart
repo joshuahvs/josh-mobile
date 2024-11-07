@@ -53,6 +53,20 @@ class _ItemEntryFormPageState extends State<ItemEntryFormPage> {
                     if (value == null || value.isEmpty) {
                       return "Item tidak boleh kosong!";
                     }
+
+                    // Panjang minimal dan maksimal
+                    int minLength = 3; // panjang minimum
+                    int maxLength = 25; // panjang maksimum
+
+                    // Cek panjang minimum
+                    if (value.length < minLength) {
+                      return "Item harus memiliki minimal $minLength karakter!";
+                    }
+
+                    // Cek panjang maksimum
+                    if (value.length > maxLength) {
+                      return "Item tidak boleh lebih dari $maxLength karakter!";
+                    }
                     return null;
                   },
                 ),
@@ -79,6 +93,9 @@ class _ItemEntryFormPageState extends State<ItemEntryFormPage> {
                     }
                     if (int.tryParse(value) == null) {
                       return "Amount harus berupa angka!";
+                    }
+                    if (int.tryParse(value)! < 0) {
+                      return "Amount tidak boleh negatif!";
                     }
                     return null;
                   },
