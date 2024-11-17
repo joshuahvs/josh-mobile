@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:josh_mobile/screens/itementry_form.dart';
+import 'package:josh_mobile/screens/list_itementry.dart';
 import 'package:josh_mobile/screens/menu.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -64,6 +65,17 @@ class LeftDrawer extends StatelessWidget {
                     ));
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.add_reaction_rounded),
+              title: const Text('Daftar Item'),
+              onTap: () {
+                  // Route menu ke halaman item
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ItemEntryPage()),
+                  );
+              },
+          ),
         ],
       ),
     );
